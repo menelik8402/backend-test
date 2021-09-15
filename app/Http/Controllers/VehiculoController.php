@@ -14,7 +14,8 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        return 'Estamos ready dfd';
+        $vehiculo = vehiculo::all();
+        return $vehiculo;
     }
 
     /**

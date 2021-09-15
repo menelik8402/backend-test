@@ -6,6 +6,8 @@ use App\Models\registroVeh;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateRequestRegistroVehic;
 use App\Models\vehiculo;
+use phpDocumentor\Reflection\Types\This;
+use Illuminate\Contracts\Validation\Validator;
 
 class RegistroVehController extends Controller
 {
@@ -17,7 +19,7 @@ class RegistroVehController extends Controller
     public function index()
     {
         try{
-            $listaVehiculos=registroVeh::where('horaSal','!=',null)->take(3)->orderBy('montoPagar','desc')->get(); 
+            $listaVehiculos=registroVeh::where('horaSal','!=',null)->select('chapa_id as Chapa','tiempoEst as Tiempo estacionado (min.)','montoPagar as Pagado')->take(3)->orderBy('montoPagar','desc')->get(); 
             return  $listaVehiculos;
         }catch(\Exception $e){
             throw $e;
@@ -43,10 +45,11 @@ class RegistroVehController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateRequestRegistroVehic $request)
+    public function store(Request $request)
     {
-        $date=Carbon::now();
-
+       
+            
+       $date=Carbon::now();
         $horaEnt=$date;
         $result=null;
         try{
@@ -54,7 +57,8 @@ class RegistroVehController extends Controller
         }catch(\Exception $e){
                 throw $e;
         }
-        return $result;
+       // return $result;
+      //  return response()->json(["resultl" => $result]);
 
     
     }

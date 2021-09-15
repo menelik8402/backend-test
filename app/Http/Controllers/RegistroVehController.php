@@ -16,7 +16,15 @@ class RegistroVehController extends Controller
      */
     public function index()
     {
-        //
+        try{
+            $listaVehiculos=registroVeh::where('horaSal','!=',null)->take(3)->orderBy('montoPagar','desc')->get(); 
+            return  $listaVehiculos;
+        }catch(\Exception $e){
+            throw $e;
+        }
+        return  "Informe Vacio";
+
+       
     }
 
     /**

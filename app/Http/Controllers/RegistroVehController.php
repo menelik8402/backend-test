@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\vehiculo;
+use App\Models\registroVeh;
 use Illuminate\Http\Request;
 
-class VehiculoController extends Controller
+class RegistroVehController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        return 'Estamos ready dfd';
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class VehiculoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\vehiculo  $vehiculo
+     * @param  \App\Models\registroVeh  $registroVeh
      * @return \Illuminate\Http\Response
      */
-    public function show(vehiculo $vehiculo)
+    public function show(registroVeh $registroVeh)
     {
         //
     }
@@ -52,10 +52,10 @@ class VehiculoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\vehiculo  $vehiculo
+     * @param  \App\Models\registroVeh  $registroVeh
      * @return \Illuminate\Http\Response
      */
-    public function edit(vehiculo $vehiculo)
+    public function edit(registroVeh $registroVeh)
     {
         //
     }
@@ -64,10 +64,10 @@ class VehiculoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\vehiculo  $vehiculo
+     * @param  \App\Models\registroVeh  $registroVeh
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, vehiculo $vehiculo)
+    public function update(Request $request, registroVeh $registroVeh)
     {
         //
     }
@@ -75,10 +75,10 @@ class VehiculoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\vehiculo  $vehiculo
+     * @param  \App\Models\registroVeh  $registroVeh
      * @return \Illuminate\Http\Response
      */
-    public function destroy(vehiculo $vehiculo)
+    public function destroy(registroVeh $registroVeh)
     {
         //
     }

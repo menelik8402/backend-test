@@ -26,3 +26,5 @@ Route::post('/save/emails','App\Http\Controllers\EmailautomatedController@store'
  */
 
 Route::get('/all','App\Http\Controllers\VehiculoController@index');
+Route::post('/entrada/vehiculo','App\Http\Controllers\RegistroVehController@store');
+Route::put('/salida/vehiculo','App\Http\Controllers\RegistroVehController@updateVehicleOut');

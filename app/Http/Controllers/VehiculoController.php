@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use  Carbon\Carbon;
 use App\Models\vehiculo;
 use Illuminate\Http\Request;
 
@@ -14,8 +14,13 @@ class VehiculoController extends Controller
      */
     public function index()
     {
-        $vehiculo = vehiculo::all();
-        return $vehiculo;
+        try{
+            $vehiculo = vehiculo::all();
+            return $vehiculo;
+        }catch(\Exception $e){
+            throw $e;
+        }
+        
     }
 
     /**
@@ -36,7 +41,14 @@ class VehiculoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $result=null;
+        try{
+           $result= vehiculo::create(['chapa'=>$request->input('chapa'),'tipo'=>$request->input('tipo'),'marca'=>$request->input('marca')]);
+        }catch(\Exception $e){
+                throw $e;
+        }
+        return $result;
+
     }
 
     /**

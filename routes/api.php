@@ -18,14 +18,15 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-/* Route::get('/send/emails','App\Http\Controllers\MailController@sendEmail');
+/********************************************************************************************
+ *                              Rutas de la tabla vehiculo                                  *    
+ ********************************************************************************************/
+Route::get('/todos','App\Http\Controllers\VehiculoController@index');
+Route::post('/guadar/vehiculo','App\Http\Controllers\VehiculoController@store');
 
-Route::post('/one/user','App\Http\Controllers\MailController@create');
-
-Route::post('/save/emails','App\Http\Controllers\EmailautomatedController@store');
- */
-
-Route::get('/all','App\Http\Controllers\VehiculoController@index');
+/********************************************************************************************
+ *                              Rutas de la tabla Registro de vehiculo                      *    
+ ********************************************************************************************/
 Route::post('/entrada/vehiculo','App\Http\Controllers\RegistroVehController@store');
 Route::put('/salida/vehiculo','App\Http\Controllers\RegistroVehController@updateVehicleOut');
 Route::get('/informe/clientes','App\Http\Controllers\RegistroVehController@index');

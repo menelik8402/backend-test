@@ -15,13 +15,14 @@ class CreateRegistroVehsTable extends Migration
     {
         Schema::create('registro_vehs', function (Blueprint $table) {
             $table->id();
-            $table->string('chapa_id');
+            $table->string('chapa_id',10);
             $table->foreign('chapa_id')->references('chapa')->on('vehiculos');
-            $table->time('horaEnt');
-            $table->time('horaSal');
-            $table->integer('tiempoEst');
-            $table->double('montoPagar');
+            $table->dateTime('horaEnt')->nullable();
+            $table->dateTime('horaSal')->nullable();
+            $table->integer('tiempoEst')->default(0);
+            $table->double('montoPagar')->default(0);
             $table->timestamps();
+            
         });
     }
 

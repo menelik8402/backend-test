@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateRequestRegistroVehic extends FormRequest
+class CreateRequestVehiculo extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,9 @@ class CreateRequestRegistroVehic extends FormRequest
     public function rules()
     {
         return [
-            'chapa' => 'required|string|max:10|min:7'
+            'chapa' => 'required|string|max:10|min:7|unique:vehiculos',
+            'tipo' => 'required|string|max:35|min:7',
+            'marca' => 'required|string|max:35'
             
            
         ];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use  Carbon\Carbon;
 use App\Models\vehiculo;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateRequestVehiculo;
 
 class VehiculoController extends Controller
 {
@@ -39,7 +40,7 @@ class VehiculoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequestVehiculo $request)
     {
         $result=null;
         try{

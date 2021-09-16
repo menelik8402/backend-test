@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CreateRequestRegistroVehic;
 use App\Models\vehiculo;
 use phpDocumentor\Reflection\Types\This;
-use Illuminate\Contracts\Validation\Validator;
+
 
 class RegistroVehController extends Controller
 {
@@ -45,20 +45,29 @@ class RegistroVehController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-       
+    public function store(CreateRequestRegistroVehic $request)
+    {        
             
        $date=Carbon::now();
         $horaEnt=$date;
         $result=null;
         try{
-           $result= registroVeh::create(['chapa_id'=>$request->input('chapa'),'horaEnt'=> $horaEnt,'horaSal'=>null,'tiempoEst'=>0,'montoPagar'=>0]);
+           $vehiculo= vehiculo::where('chapa','=',$request->input('chapa'))->get();
+           if(isset($vehiculo[0])){
+              $vehicEst=registroVeh::where('chapa_id','=',$request->input('chapa'))->where('horaSal','=',null)->get();
+                 if(!isset($vehicEst[0]))
+                  $result= registroVeh::create(['chapa_id'=>$request->input('chapa'),'horaEnt'=> $horaEnt,'horaSal'=>null,'tiempoEst'=>0,'montoPagar'=>0]);
+                  else
+                  return response()->json("Esta chapa ya esta en el estacionamiento");
+           }else
+           {
+            return response()->json("Esta chapa no existe en la tabla vehiculos");
+           }
         }catch(\Exception $e){
                 throw $e;
         }
        // return $result;
-      //  return response()->json(["resultl" => $result]);
+        return response()->json($result,201);
 
     
     }
